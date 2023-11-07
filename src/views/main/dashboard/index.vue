@@ -1,6 +1,8 @@
 <template>
   <div class="box">
     <QuickSummary />
+    <SkillSection />
+    <AppointmentPersmission/>
     <basic-template />
     <Card />
     <Charts />
@@ -15,13 +17,19 @@ import Communication from './components/communication.vue'
 import Card from './components/card/index.vue'
 import Charts from './components/charts/index.vue'
 import QuickSummary from './components/quick-summary.vue'
+import SkillSection from './components/skill-section.vue'
+import AppointmentPersmission from './components/appointment-permission.vue'
+
+
 export default defineComponent({
   components: {
     Card,
     Charts,
     basicTemplate,
     Communication,
-    QuickSummary
+    QuickSummary,
+    SkillSection,
+    AppointmentPersmission
   }
 })
 </script>
