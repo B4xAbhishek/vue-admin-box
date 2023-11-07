@@ -208,7 +208,7 @@ export default defineComponent({
   justify-content: space-between;
   column-gap: 30px;
   margin-bottom: 40px;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
 
 
   .quick-summary-left {
@@ -318,6 +318,11 @@ export default defineComponent({
           }
         }
       }
+
+      @media (max-width: 655px) {
+        width: 100%; 
+        height: 100%;
+      }
     }
   }
 
@@ -390,6 +395,10 @@ export default defineComponent({
         }
       }
     }
+
+    @media (max-width: 655px) {
+        margin-top: 20px;
+      }
   }
 }
 
