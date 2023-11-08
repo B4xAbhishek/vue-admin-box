@@ -11,9 +11,9 @@
       <el-card class="box-card">
         <div class="text item">
           <div class="row-line">
-            <div class="">
+            <div class="metrics">
               <div class="title">Active</div>
-              <div class="values">23</div>
+              <div class="values">26</div>
             </div>
             <div class="metrics">
               <div class="title">Upcoming</div>
@@ -122,7 +122,7 @@ export default defineComponent({
 .sub-head {
   display: flex;
   justify-content: space-between;
-  margin-top: 14px;
+  margin-top: 40px;
   column-gap: 25px;
   margin-bottom: 20px;
   flex-wrap: wrap;

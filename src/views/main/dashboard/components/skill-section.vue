@@ -18,7 +18,7 @@
         </div>
         <div class="body">
           <div class="box">
-            <Chart :option="options" />
+            <Chart :option="chartOption" />
           </div>
         </div>
       </div>
@@ -27,48 +27,53 @@
           Skill Report
         </div>
         <div class="body">
-          <div class="" v-for="index in 5" :key="index">
-            <div class="body-card">
-              <div class="row1">
-                <div class="row-left">
-                  <img :src="walker" />
+          <el-scrollbar>
+            <div class="scrollbar-flex-content">
+              <div class="scrollbar-demo-item" v-for="index in 5" :key="index">
+                <div class="body-card">
+                  <div class="row1">
+                    <div class="row-left">
+                      <img :src="walker" />
 
-                </div>
-                <div class="row-right">
-                  <div class="left-row-header">Dance</div>
-                  <div class="left-row-flex">
-                    <div class="metrics">
-                      <div>Students</div>
-                      <div>15</div>
                     </div>
-                    <div class="metrics">
-                      <div>Sessions token</div>
-                      <div>7</div>
+                    <div class="row-right">
+                      <div class="left-row-header">Dance</div>
+                      <div class="left-row-flex">
+                        <div class="metrics">
+                          <div>Students</div>
+                          <div>15</div>
+                        </div>
+                        <div class="metrics">
+                          <div>Sessions token</div>
+                          <div>7</div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="row2">
+
+                    <div class="row-left"></div>
+                    <div class="row-right">
+                      <div>Performance</div>
+                      <div class="icon-text">
+                        <div class="icon">
+                          <img :src="arrowUp" />
+                        </div>
+                        <div class="text">
+                          18 % improved from last week
+                        </div>
+
+                      </div>
                     </div>
 
                   </div>
                 </div>
-
-              </div>
-              <div class="row2">
-
-                <div class="row-left"></div>
-                <div class="row-right">
-                  <div>Performance</div>
-                  <div class="icon-text">
-                    <div class="icon">
-                      <img :src="arrowUp" />
-                    </div>
-                    <div class="text">
-                      18 % improved from last week
-                    </div>
-
-                  </div>
-                </div>
-
               </div>
             </div>
-          </div>
+          </el-scrollbar>
+
         </div>
       </div>
     </div>
@@ -120,7 +125,61 @@ export default defineComponent({
       },
     ]);
 
-    return { value, options, doubleArrow, options2, walker, arrowUp };
+
+
+    const chartOption = {
+
+      legend: {
+        orient: 'vertical', 
+        left: '80%', 
+        top: 'center', 
+        data: ['搜索引擎', '直接访问', '邮件营销', '联盟广告'], 
+      },
+      series: [
+        {
+          name: '访问来源',
+          type: 'pie',
+          radius: ['40%', '70%'],
+          avoidLabelOverlap: false,
+          itemStyle: {
+            borderRadius: 10,
+            borderColor: '#fff',
+            borderWidth: 10
+          },
+          label: {
+            show: false,
+            position: 'center'
+          },
+          emphasis: {
+            label: {
+              show: true,
+              fontSize: 26,
+              fontWeight: 'bold',
+              formatter: (p) => {
+                let dom = `<div backgroundColor="red">1</div>`
+                return p.name + '\n' + p.value
+              }
+            }
+          },
+          labelLine: {
+            show: false
+          },
+          data: [
+            { value: 1048, name: '搜索引擎' },
+            { value: 735, name: '直接访问' },
+            { value: 580, name: '邮件营销' },
+            { value: 484, name: '联盟广告' },
+    
+          ]
+        }
+      ]
+    };
+
+
+
+
+
+    return { value, options, doubleArrow, options2, walker, arrowUp, chartOption };
   },
 });
 </script>
@@ -206,6 +265,8 @@ export default defineComponent({
             height: 90px;
             align-items: flex-start;
             padding: 20px;
+            background-color: #ffffff;
+            color: #000000;
 
             .row-left {
               display: flex;
@@ -224,6 +285,7 @@ export default defineComponent({
               display: flex;
               flex-direction: column;
               row-gap: 10px;
+              background-color: #ffffff;
 
 
               .left-row-header {
@@ -255,6 +317,7 @@ export default defineComponent({
             height: 50px;
             background-color: #E6EAED;
             display: flex;
+            color: #000000;
 
             column-gap: 10px;
             align-items: flex-start;
@@ -320,4 +383,25 @@ export default defineComponent({
   width: calc(100% - 40px);
   height: 150px;
   background: var(--system-page-background);
-}</style>
+}
+
+.scrollbar-flex-content {
+  display: flex;
+}
+
+.scrollbar-demo-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // width: 100px;
+  // height: 50px;
+  margin: 10px;
+  text-align: center;
+  border-radius: 4px;
+  background: var(--el-color-danger-light-9);
+  color: var(--el-color-danger);
+}
+
+
+</style>
