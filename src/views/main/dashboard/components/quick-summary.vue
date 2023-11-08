@@ -210,6 +210,9 @@ export default defineComponent({
   margin-bottom: 40px;
   flex-wrap: wrap;
 
+  @media (max-width: 655px) {
+    display: block; /* Change display to block for mobile view */
+  }
 
   .quick-summary-left {
     flex: 2;
